@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     # skip_before_action :require_user
-    skip_before_action :verifify_authenticity_token
+    # skip_before_action :authorized, only: [:create_session]
 
 #   def create
 #     # Get access tokens from the google server
@@ -37,9 +37,11 @@ class SessionsController < ApplicationController
     user.google_refresh_token = refresh_token if refresh_token.present?
     user.save!
 
+    # token = encode_token({user_id: user.id})
+
     #create cookie after user is made
     # session[:current_user_id] = { value: user.uid, expires: Time.now + 7.days }
-    session[:current_user_id] = user.uid
+    cookies.encrypted[:current_user_id] = user.uid
     
     # byebug
     render json: user
