@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :categories 
+    has_many :videos, through: :categories
 
     def self.create_from_omniauth(auth)
         # Creates a new user only if it doesn't exist
