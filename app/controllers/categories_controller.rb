@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
         category = Category.find_by(id: params[:category_id], user_id: user.id)
         # byebug
         category.destroy!
-        render json: { category: category, message: 'record deleted' }, status: :ok
+        render json: { category: category, message: 'category deleted' }, status: :ok
     end 
 
     private
