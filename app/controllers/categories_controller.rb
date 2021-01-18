@@ -1,9 +1,8 @@
 class CategoriesController < ApplicationController
     def index
+        user = User.find(current_user.id);
         # byebug
-        user = User.find_by(uid: params[:uid])
-        
-        render json: user.categories
+        render json: user.categories, :include => :videos
     end 
 
     def create 
@@ -17,11 +16,11 @@ class CategoriesController < ApplicationController
         end
     end
 
-    def user_categories 
-        user = User.find_by(uid: params[:uid])
+    # def user_categories 
+    #     user = User.find_by(uid: params[:uid])
         
-        render json: user.categories
-    end 
+    #     render json: user.categories
+    # end 
 
     def delete
     end 
