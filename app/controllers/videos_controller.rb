@@ -12,8 +12,15 @@ class VideosController < ApplicationController
 
     end 
 
+    def destroy
+        user = User.find(current_user.id)
+        video = Video.find_by(id: params[:video_id])
+        video.destroy!
+        render json: { video: video, message: 'video deleted'}, status: :ok
+    end 
+
     private
     def video_params
-        params.permit(:title, :source, :category_id)
+        params.permit(:title, :source, :category_id, :video_id)
     end 
 end

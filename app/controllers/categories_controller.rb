@@ -22,12 +22,17 @@ class CategoriesController < ApplicationController
     #     render json: user.categories
     # end 
 
-    def delete
+    def destroy
+        user = User.find(current_user.id)
+        category = Category.find_by(id: params[:category_id], user_id: user.id)
+        # byebug
+        category.destroy!
+        render json: { category: category, message: 'category deleted' }, status: :ok
     end 
 
     private
 
     def category_params
-        params.permit(:name, :google_token, :uid)
+        params.permit(:name, :google_token, :uid, :category_id)
     end 
 end
