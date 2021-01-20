@@ -4,13 +4,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :users
 
-  namespace :api do
-    namespace :v1 do
-      post '/login', to: 'auth#create'   
-      get '/profile', to: 'users#profile'
-    end
-  end
-
 
   get "/logout", to: "sessions#destroy"
   get "/auth/google_oauth2/callback", to: "sessions#create_session"
