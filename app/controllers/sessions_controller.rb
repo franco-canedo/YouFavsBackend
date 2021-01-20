@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
     # skip_before_action :require_user
+
     # skip_before_action :authorized, only: [:create_session]
     def profile 
         render json: current_user, :include => {:categories => {:only => :name}}, status: :accepted
     end 
+
 
   def create_session
     # Get access tokens from the google server
