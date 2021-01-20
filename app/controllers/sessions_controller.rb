@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     # skip_before_action :require_user
-    skip_before_action :verifify_authenticity_token
+    # skip_before_action :verifify_authenticity_token
 
 #   def create
 #     # Get access tokens from the google server
