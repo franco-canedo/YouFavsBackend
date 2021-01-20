@@ -3,6 +3,10 @@ class ApplicationController < ActionController::API
     include ActionController::RequestForgeryProtection
 
     # before_action :authorized
+
+    def index
+        render json: { hello: 'hello' }
+    end 
  
     def encode_token(payload)
       # should store secret in env variable

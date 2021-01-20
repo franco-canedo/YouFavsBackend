@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "application#index"
+
   resources :category_videos
   resources :videos
   resources :categories
